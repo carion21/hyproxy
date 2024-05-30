@@ -5,6 +5,8 @@ import requests
 import time
 import os
 
+load_dotenv()
+
 app = Flask(__name__)
 
 
