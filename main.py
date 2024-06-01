@@ -10,8 +10,14 @@ load_dotenv()
 app = Flask(__name__)
 
 
-@app.route('/api/<path:path>', methods=['GET', 'POST', 'PUT', 'DELETE'])
-def proxy(path):
+@app.route('/')
+def index():
+    return 'Hello, World!'
+
+
+@app.route('/proxy', methods=['GET', 'POST', 'PUT', 'DELETE'])
+def proxy():
+    path = request.args.get('path')
     url = f'{os.getenv("HOST")}/{path}'
 
     start = time.time()
