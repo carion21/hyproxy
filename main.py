@@ -15,10 +15,13 @@ def index():
     return 'Hello, World!'
 
 
-@app.route('/proxy', methods=['GET', 'POST', 'PUT', 'DELETE'])
+@app.route('/proxy', methods=['GET', 'POST', 'PUT', 'PATCH', 'DELETE'])
 def proxy():
     path = request.args.get('path')
-    url = f'{os.getenv("HOST")}/{path}'
+    url = f'{os.getenv("HOST")}{path}'
+
+    print(f'path: {path}')
+    print(f'url: {url}')
 
     start = time.time()
 
